@@ -8,6 +8,8 @@ apt-get install -y git lxc-docker apt-transport-https
 
 docker pull jovistar/ss
 docker pull jovistar/pdnsd
+docker pull mobtitude/vpn-pptp
+#docker pull haproxy
 #docker pull jovistar/pptp
 
 git config --global user.email "jovistar@gmail.com"

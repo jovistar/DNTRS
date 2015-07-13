@@ -4,4 +4,6 @@
 
 ./ss_start.sh
 
+./pptp_start.sh
+
 exit 0
