@@ -1,4 +1,4 @@
-#/bin/sh
+#!/usr/bin/env bash
 
 docker stop ocserv
 docker rm ocserv
