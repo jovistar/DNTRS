@@ -4,6 +4,6 @@
 
 ./ss_start.sh
 
-./ocserv_start.sh
+./ngrok_start.sh
 
 exit 0
