@@ -1,14 +1,15 @@
 #!/bin/sh
 
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
-bash -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+bash -c "deb https://apt.dockerproject.org/repo ubuntu-trusty main > /etc/apt/sources.list.d/docker.list"
 
 apt-get update
-apt-get install -y git lxc-docker apt-transport-https
+apt-get install -y git docker-engine apt-transport-https ca-certificates
 
 docker pull jovistar/ss
 docker pull jovistar/pdnsd
 docker pull jovistar/ocserv
+docker pull jovistar/ngrok
 
 git config --global user.email "jovistar@gmail.com"
 git config --global user.name "jovistar"
