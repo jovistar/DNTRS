@@ -1,7 +1,7 @@
 #!/bin/sh
 
 apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-bash -c "deb https://apt.dockerproject.org/repo ubuntu-trusty main > /etc/apt/sources.list.d/docker.list"
+bash -c "echo deb https://apt.dockerproject.org/repo ubuntu-trusty main > /etc/apt/sources.list.d/docker.list"
 
 apt-get update
 apt-get install -y git docker-engine apt-transport-https ca-certificates
