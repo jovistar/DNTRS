@@ -4,5 +4,6 @@
     "local_port":1080,
     "password":"lijinghua1",
     "timeout":600,
-    "method":"rc4-md5"
+    "method":"aes-256-cfb"
+    "auth":true
 }
