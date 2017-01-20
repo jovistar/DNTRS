@@ -15,7 +15,7 @@ apt-get install -y docker-engine
 
 docker run hello-world
 
-docker pull jovistar/ss
+#docker pull jovistar/ss
 #docker pull jovistar/pdnsd
 #docker pull jovistar/ocserv
 #docker pull jovistar/ngrok
