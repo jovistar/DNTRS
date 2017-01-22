@@ -1,15 +1,12 @@
 FROM ubuntu:16.04
 
 RUN apt-get update
-RUN apt-get install -y git build-essential autoconf libtool libssl-dev \
-    gawk debhelper dh-systemd init-system-helpers pkg-config asciidoc xmlto apg libpcre3-dev zlib1g-dev \
-    libev-dev libudns-dev libsodium-dev
 
-RUN git clone https://github.com/shadowsocks/shadowsocks-libev.git
-RUN cd shadowsocks-libev
-RUN ./autogen.sh && dpkg-buildpackage -b -us -uc -i
-RUN cd ..
-RUN dpkg -i shadowsocks-libev*.deb
+COPY ss.deb ss.deb
+RUN dpkg -i ss.deb
+
+RUN apt-get -f -y install
+RUN dpkg - ss.deb
 
 EXPOSE 8388
 
