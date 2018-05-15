@@ -1,0 +1,15 @@
+{
+  "inbound": {
+    "port": 38388,
+    "protocol": "shadowsocks",
+    "settings": {
+      "password": "PASSWORD",
+      "ota": false,
+      "method": "aes-256-cfb"
+    }
+  },
+  "outbound": {
+    "protocol": "freedom",
+    "settings": {}
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "inbound": {
+    "port": 38388,
+    "protocol": "shadowsocks",
+    "settings": {
+      "password": "PASSWORD",
+      "ota": false,
+      "method": "aes-256-cfb"
+    }
+  },
+  "outbound": {
+    "protocol": "shadowsocks",
+    "settings": {
+      "servers": [
+        {
+          "address": "bwhk.jscloud.in",
+          "method": "aes-256-cfb",
+          "ota": false,
+          "password": "PASSWORD",
+          "port": 38388
+        }
+      ]
+    }
+  },
+  "outboundDetour": [
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "direct"
+    }
+  ],
+  "routing": {
+    "strategy": "rules",
+    "settings": {
+      "domainStrategy": "IPIfNonMatch",
+      "rules": [
+        {
+          "type": "chinasites",
+          "outboundTag": "direct"
+        },
+        {
+          "type": "chinaip",
+          "outboundTag": "direct"
+        }
+      ]
+    }
+  }
+}
