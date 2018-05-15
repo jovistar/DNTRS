@@ -1,12 +1,17 @@
 #!/bin/sh
 
 function Validate_Parameters() {
-    if [ "$1" -ne 3 ]
+    if [ "$1" != "R" ] && [ "$1" != "V" ]
     then
         return 1
     fi
 
-    if [ "$2" != "R" ] && [ "$2" != "V" ]
+    if [ "$1" = "R" ] && [ "$2" -ne 4 ]
+    then
+        return 1
+    fi
+
+    if [ "$1" = "V" ] && [ "$2" -ne 3 ]
     then
         return 1
     fi
@@ -58,7 +63,7 @@ DEPLOY_MODE="$1"
 DEPLOY_URL="$2"
 SS_PASSWORD="$3"
 
-Validate_Parameters "$#" "$DEPLOY_MODE"
+Validate_Parameters "$DEPLOY_MODE" "$#"
 if [ "$?" -eq 1 ]
 then
     Print_Usage
@@ -81,6 +86,7 @@ mkdir v2ray
 if [ "$DEPLOY_MODE" = "R" ]
 then
     Download_Conf "$DEPLOY_URL" "relay"
+    sed -i "s/SERVER/$4/g" v2ray/config.json
 else
     Download_Conf "$DEPLOY_URL" "vnet"
 fi
