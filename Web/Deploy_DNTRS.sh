@@ -70,7 +70,7 @@ echo "Deploying V2Ray"
 ./Deploy.sh
 
 mkdir v2ray
-if [ "$DEPLOY_MODE" = "R"]
+if [ "$DEPLOY_MODE" = "R" ]
 then
     Download_Conf "$DEPLOY_URL" "relay"
 else
