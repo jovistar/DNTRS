@@ -19,6 +19,12 @@ function Print_Usage() {
     echo "R - Relay / V - Vnet"
 }
 
+function Run_Clean() {
+    echo "Cleaning"
+    rm -rf DNTRS
+    echo "Cleaned"
+}
+
 function Install_Tool() {
     echo "Installing Git & Curl"
     apt-get update
@@ -58,6 +64,8 @@ then
     Print_Usage
     exit 1
 fi
+
+Run_Clean
 
 Install_Tool
 
