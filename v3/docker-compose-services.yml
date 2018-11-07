@@ -1,0 +1,52 @@
+version: '3.3'
+
+services:
+  v2ray-relay:
+    image: v2ray/official:latest
+    ports:
+      - target: 38388
+        published: 38388
+        protocol: tcp
+        mode: host
+    configs:
+      - source: v2ray-relay_config
+        target: /v2ray.json
+    command: v2ray -config=/v2ray.json
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.labels.location == cn]
+
+  v2ray-vnet:
+    image: v2ray/official:latest
+    ports:
+      - target: 38388
+        published: 38388
+        protocol: tcp
+        mode: host
+    configs:
+      - source: v2ray-vnet_config
+        target: /v2ray.json
+    command: v2ray -config=/v2ray.json
+    deploy:
+      mode: global
+      placement:
+        constraints: [node.labels.location != cn]
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - /home/ubuntu/download_center:/var/www/html
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.role == manager]
+
+configs:
+  v2ray-relay_config:
+    external: true
+  v2ray-vnet_config:
+    external: true
